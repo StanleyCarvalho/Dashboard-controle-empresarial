@@ -4,15 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard Empresarial</title>
-  <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+  <link rel="icon" href="./assets/icons/favicon.png" type="image/png">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <!-- CSS Custom -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
+<!-- Navbar -->
 <nav class="navbar navbar-expand-lg shadow-sm">
   <div class="container-fluid">
     <a class="navbar-brand fw-bold" href="#">🏢 Dashboard Controle Empresarial 📊</a>
@@ -32,11 +34,14 @@
       </ul>
     </aside>
 
+    <!-- Main -->
     <main class="col-md-10 p-4">
 
       <!-- Dashboard Geral -->
       <section id="section-home" class="section active">
         <h3 class="mb-4">Dashboard Geral</h3>
+
+        <!-- Cards -->
         <div class="row g-4 mb-4">
           <div class="col-md-3"><div class="metric-card gradient1"><h6>Usuários</h6><h3 id="totalUsuarios">0</h3></div></div>
           <div class="col-md-3"><div class="metric-card gradient2"><h6>Vendas Totais</h6><h3 id="totalVendas">R$ 0</h3></div></div>
@@ -44,7 +49,7 @@
           <div class="col-md-3"><div class="metric-card gradient4"><h6>Inativos</h6><h3 id="usuariosInativos">0</h3></div></div>
         </div>
 
-        <!-- Gráficos -->
+        <!-- Gráficos com legenda -->
         <div class="row g-4">
           <div class="col-md-6">
             <div class="card shadow p-3">
@@ -109,14 +114,18 @@
   </div>
 </div>
 
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="js/script.js"></script>
-
 <footer style="background-color:#1f1e2e; color:white; padding:12px 0; text-align:center; font-size:0.9rem;">
-  © 2025 <a href="https://github.com/StanleyCarvalho" target="_blank" style="color:#4e73df; text-decoration:none; transition:0.3s;">Github Stanley</a>. Desenvolvido pelo Stanley.
+  © 2025 <a href="https://github.com/StanleyCarvalho" target="_blank" 
+          style="color:#4e73df; text-decoration:none; transition:0.3s;">Github Stanley</a>. Desenvolvido pelo Stanley.
 </footer>
 
+<style>
+  footer a:hover { color:#1f1e2e; text-decoration:underline; }
+</style>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./js/script.js"></script>
 </body>
 </html>
