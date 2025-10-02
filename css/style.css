@@ -11,13 +11,13 @@ body { background-color:#f4f6f8; color:#212529; font-family:'Inter',sans-serif; 
 .gradient3 { background:linear-gradient(135deg,#f6c23e,#dda20a);}
 .gradient4 { background:linear-gradient(135deg,#e74a3b,#c92c2c);}
 
-.table thead { background-color:#83e058; color:white; }
+.table thead { background-color:#4e73df; color:white; }
 .table tbody tr:hover { background-color:rgba(204, 30, 18, 0.1);}
 .form-control, .form-select { border-radius:8px; }
 
 .chart-wrapper { display:flex; align-items:center; justify-content:space-between; gap:10px; }
-.chart-container { width:90%; height:500px; }
-.chart-legend { width:25%; }
+.chart-container { width:90%; height:400px; }
+.chart-legend { width:25%; font-size:0.9rem; }
 
 body.dark-mode { background-color:#121212; color:#fff; }
 body.dark-mode .navbar { background:linear-gradient(90deg,#e6a1a1,#e79393); }

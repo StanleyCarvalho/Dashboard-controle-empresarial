@@ -1,4 +1,3 @@
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 let usuarios = [
   { id:1, nome:"João Silva", email:"joao@email.com", status:"Ativo", vendas:1500 },
   { id:2, nome:"Maria Souza", email:"maria@email.com", status:"Inativo", vendas:2300 }
@@ -8,7 +7,6 @@ const userTable = document.getElementById("userTable");
 const filtroStatus = document.getElementById("filtroStatus");
 const filtroVendas = document.getElementById("filtroVendas");
 const btnAplicarFiltros = document.getElementById("btnAplicarFiltros");
-const reportList = document.getElementById("reportList");
 
 document.querySelectorAll(".menu-link").forEach(link=>{
   link.addEventListener("click", e=>{
@@ -24,10 +22,10 @@ const toggleBtn = document.getElementById("toggleDarkMode");
 toggleBtn.addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
   toggleBtn.innerHTML = document.body.classList.contains("dark-mode") ? "☀️ Light" : "🌙 Dark";
-  atualizarGraficos(); // Atualiza cores dos gráficos
+  atualizarGraficos();
 });
 
-
+// Gráficos
 const ctxVendasUsuarios = document.getElementById("chartVendasUsuarios");
 const ctxUsuarios = document.getElementById("chartUsuarios");
 
@@ -56,17 +54,13 @@ let chartUsuarios = new Chart(ctxUsuarios,{
 });
 
 function atualizarGraficos(){
-
   chartVendasUsuarios.data.labels = usuarios.map(u=>u.nome);
   chartVendasUsuarios.data.datasets[0].data = usuarios.map(u=>u.vendas);
-  chartVendasUsuarios.options.scales.x.ticks.color = document.body.classList.contains("dark-mode")?"#fff":"#212529";
-  chartVendasUsuarios.options.scales.y.ticks.color = document.body.classList.contains("dark-mode")?"#fff":"#212529";
   chartVendasUsuarios.update();
 
   const ativos = usuarios.filter(u=>u.status==="Ativo").length;
   const inativos = usuarios.filter(u=>u.status==="Inativo").length;
   chartUsuarios.data.datasets[0].data = [ativos,inativos];
-  chartUsuarios.options.plugins.legend.labels.color = document.body.classList.contains("dark-mode")?"#fff":"#212529";
   chartUsuarios.update();
 
   document.getElementById("totalUsuarios").textContent = usuarios.length;
@@ -103,12 +97,10 @@ function renderUsuarios() {
       u.status = e.target.value;
       atualizarGraficos();
     });
-
     row.querySelector(".vendas-input").addEventListener("input", e=>{
       u.vendas = parseFloat(e.target.value)||0;
       atualizarGraficos();
     });
-  
     row.querySelector(".delete-btn").addEventListener("click", ()=>{
       usuarios.splice(usuarios.indexOf(u),1);
       renderUsuarios();
@@ -136,6 +128,7 @@ document.getElementById("userForm").addEventListener("submit", e=>{
   renderUsuarios();
 });
 
+// Export CSV
 document.getElementById("btnExportCSV").addEventListener("click", ()=>{
   let csv = "Nome,Email,Status,Vendas\n";
   usuarios.forEach(u=>{ csv+=`${u.nome},${u.email},${u.status},${u.vendas}\n` });
