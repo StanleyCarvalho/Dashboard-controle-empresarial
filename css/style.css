@@ -1,27 +1,44 @@
-body { background-color:#f4f6f8; color:#212529; font-family:'Inter',sans-serif; transition:0.3s; }
-.navbar { background:linear-gradient(90deg,#6182e6,#b1c1f1); color:white; }
-.sidebar { background-color:#1e1e2f; color:white; border-right:1px solid rgba(255,255,255,0.1); }
-.sidebar .nav-link { color:rgba(255,255,255,0.7); margin-bottom:6px; border-radius:8px; transition:0.3s; }
-.sidebar .nav-link.active, .sidebar .nav-link:hover { color:white; background-color:rgba(255,255,255,0.1); }
+body {
+  background-color: #f4f6f8;
+  color: #212529;
+  font-family: 'Inter', sans-serif;
+  transition: 0.3s;
+}
 
-.metric-card { border-radius:12px; padding:20px; text-align:center; color:white; box-shadow:0 4px 10px rgba(0,0,0,0.05); transition:0.2s; }
-.metric-card:hover { transform:translateY(-4px); }
-.gradient1 { background:linear-gradient(135deg,#8fa3e0,#8ba3ec);}
-.gradient2 { background:linear-gradient(135deg,#1cc88a,#17a673);}
-.gradient3 { background:linear-gradient(135deg,#f6c23e,#dda20a);}
-.gradient4 { background:linear-gradient(135deg,#e74a3b,#c92c2c);}
+/* Navbar */
+.navbar { background: linear-gradient(90deg,#6182e6,#b1c1f1); color: white; }
+.navbar .btn { transition: 0.3s; }
 
-.table thead { background-color:#4e73df; color:white; }
-.table tbody tr:hover { background-color:rgba(204, 30, 18, 0.1);}
-.form-control, .form-select { border-radius:8px; }
+/* Sidebar */
+.sidebar { background-color: #1e1e2f; color: white; border-right: 1px solid rgba(255,255,255,0.1); }
+.sidebar .nav-link { color: rgba(255,255,255,0.7); margin-bottom: 6px; border-radius: 8px; transition:0.3s; }
+.sidebar .nav-link.active, .sidebar .nav-link:hover { color: white; background-color: rgba(255,255,255,0.1); }
 
+/* Metric cards */
+.metric-card { border-radius: 12px; padding: 20px; text-align: center; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition:0.2s; }
+.metric-card:hover { transform: translateY(-4px); }
+.gradient1 { background: linear-gradient(135deg,#8fa3e0,#8ba3ec); }
+.gradient2 { background: linear-gradient(135deg,#1cc88a,#17a673); }
+.gradient3 { background: linear-gradient(135deg,#f6c23e,#dda20a); }
+.gradient4 { background: linear-gradient(135deg,#e74a3b,#c92c2c); }
+
+/* Tables */
+.table thead { background-color: #83e058; color: white; }
+.table tbody tr:hover { background-color: rgba(204,30,18,0.1); }
+.form-control, .form-select { border-radius: 8px; }
+
+/* Charts */
 .chart-wrapper { display:flex; align-items:center; justify-content:space-between; gap:10px; }
-.chart-container { width:90%; height:400px; }
-.chart-legend { width:25%; font-size:0.9rem; }
+.chart-container { width: 90%; height: 500px; }
+.chart-legend { width: 25%; }
 
-body.dark-mode { background-color:#121212; color:#fff; }
-body.dark-mode .navbar { background:linear-gradient(90deg,#e6a1a1,#e79393); }
-body.dark-mode .sidebar { background-color:#1f1f1f; color:white; }
-body.dark-mode .card { background-color:#1f1f1f; color:white; }
-body.dark-mode .table thead { background-color:#2a2a2a; }
+/* Dark mode */
+body.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+body.dark-mode .navbar { background: linear-gradient(90deg,#e6a1a1,#e79393); }
+body.dark-mode .sidebar { background-color: #1f1f1f; }
+body.dark-mode .card { background-color: #1f1f1f; color: white; }
+body.dark-mode .table thead { background-color: #2a2a2a; }
 body.dark-mode .table tbody tr:hover { background-color: rgba(255,255,255,0.05); }
