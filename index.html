@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Empresarial</title>
+  <link rel="icon" href="assets/icons/favicon.png" type="favicon/png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="#"> 🏢 Dashboard Controle Empresarial 📊 </a>
+    <button id="toggleDarkMode" class="btn btn-outline-dark ms-auto">🌙 Dark</button>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <aside class="col-md-2 sidebar p-3 vh-100 d-none d-md-block">
+      <h6 class="text-uppercase text-muted">Menu</h6>
+      <ul class="nav flex-column mt-3">
+        <li class="nav-item"><a class="nav-link menu-link active" data-section="home" href="#">🏢 Início</a></li>
+        <li class="nav-item"><a class="nav-link menu-link" data-section="usuarios" href="#"> 👥 Usuários</a></li>
+        <li class="nav-item"><a class="nav-link menu-link" data-section="relatorios" href="#">📑 Relatórios</a></li>
+      </ul>
+    </aside>
+
+    <main class="col-md-10 p-4">
+
+      <!-- Dashboard Geral -->
+      <section id="section-home" class="section active">
+        <h3 class="mb-4">Dashboard Geral</h3>
+
+        <!-- Cards -->
+        <div class="row g-4 mb-4">
+          <div class="col-md-3"><div class="metric-card gradient1"><h6>Usuários</h6><h3 id="totalUsuarios">0</h3></div></div>
+          <div class="col-md-3"><div class="metric-card gradient2"><h6>Vendas Totais</h6><h3 id="totalVendas">R$ 0</h3></div></div>
+          <div class="col-md-3"><div class="metric-card gradient3"><h6>Ativos</h6><h3 id="usuariosAtivos">0</h3></div></div>
+          <div class="col-md-3"><div class="metric-card gradient4"><h6>Inativos</h6><h3 id="usuariosInativos">0</h3></div></div>
+        </div>
+
+        <!-- Gráficos com legenda ao lado -->
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="card shadow p-3">
+              <h5 class="card-title">📊 Vendas por Usuário</h5>
+              <div class="chart-wrapper">
+                <div class="chart-container"><canvas id="chartVendasUsuarios"></canvas></div>
+                <div class="chart-legend" id="legendVendasUsuarios"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card shadow p-3">
+              <h5 class="card-title">👥 Usuários (Ativos x Inativos)</h5>
+              <div class="chart-wrapper">
+                <div class="chart-container"><canvas id="chartUsuarios"></canvas></div>
+                <div class="chart-legend" id="legendUsuarios"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Usuários -->
+      <section id="section-usuarios" class="section d-none">
+        <div class="card shadow">
+          <div class="card-body">
+            <h4 class="card-title mb-4">Gerenciar Usuários</h4>
+
+            <form id="userForm" class="row g-3 mb-4">
+              <div class="col-md-3"><input type="text" id="nome" class="form-control" placeholder="Nome" required></div>
+              <div class="col-md-3"><input type="email" id="email" class="form-control" placeholder="Email" required></div>
+              <div class="col-md-2"><select id="status" class="form-select"><option>Ativo</option><option>Inativo</option></select></div>
+              <div class="col-md-2"><input type="number" id="vendas" class="form-control" placeholder="Vendas R$" min="0" required></div>
+              <div class="col-md-2 d-grid"><button class="btn btn-success">Adicionar</button></div>
+            </form>
+
+            <div class="row mb-3 align-items-end">
+              <div class="col-md-3"><label>Status</label><select id="filtroStatus" class="form-select"><option value="Todos">Todos</option><option value="Ativo">Ativos</option><option value="Inativo">Inativos</option></select></div>
+              <div class="col-md-3"><label>Vendas mínimas</label><input type="number" id="filtroVendas" class="form-control" placeholder="Ex: 1000"></div>
+              <div class="col-md-2"><button id="btnAplicarFiltros" class="btn btn-primary w-100">Filtrar</button></div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-hover align-middle text-center">
+                <thead class="table-dark"><tr><th>#</th><th>Nome</th><th>Email</th><th>Status</th><th>Vendas (R$)</th><th>Ações</th></tr></thead>
+                <tbody id="userTable"></tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Relatórios -->
+      <section id="section-relatorios" class="section d-none">
+        <h3 class="mb-4">📑 Relatórios</h3>
+        <button id="btnExportCSV" class="btn btn-success mb-3">Exportar CSV</button>
+        <ul id="reportList" class="list-group"></ul>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/script.js"></script>
+
+<footer style="background-color:#1f1e2e; color:white; padding:12px 0; text-align:center; font-size:0.9rem;">
+  © 2025 <a href="https://github.com/StanleyCarvalho" target="_blank" 
+          style="color:#4e73df; text-decoration:none; transition:0.3s;">Github Stanley</a>. Desenvolvido pelo Stanley.
+</footer>
+
+<style>
+  footer a:hover {
+    color: #1f1e2e;; /* muda suavemente ao passar o mouse */
+    text-decoration: underline;
+  }
+</style>
+
+</body>
+</html>
