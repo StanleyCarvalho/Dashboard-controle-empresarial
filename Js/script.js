@@ -1,3 +1,4 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 let usuarios = [
   { id:1, nome:"João Silva", email:"joao@email.com", status:"Ativo", vendas:1500 },
   { id:2, nome:"Maria Souza", email:"maria@email.com", status:"Inativo", vendas:2300 }
